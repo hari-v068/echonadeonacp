@@ -46,7 +46,7 @@ export const makeLemonade = (acpPlugin: AcpPlugin) =>
         }
 
         if (
-          state.inventory.aquired.filter((item) => item.value === "Lemon")
+          state.inventory.acquired.filter((item) => item.value === "Lemon")
             .length === 0
         ) {
           return new ExecutableGameFunctionResponse(
