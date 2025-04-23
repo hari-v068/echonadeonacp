@@ -1,13 +1,18 @@
 import { agents } from "@/game/agents";
 import { createAgent, runAgent } from "@/lib/helpers";
 
-const agentCreations = Object.values(agents).map(createAgent);
+const createAgents = Object.values(agents).map(createAgent);
 
-Promise.all(agentCreations)
-  .then((agents) => {
-    return Promise.all(agents.map(runAgent));
+Promise.all(createAgents)
+  .then((createdAgents) => {
+    return Promise.all(
+      createdAgents.map((agent) => {
+        const config = agents[agent.name.toLowerCase()];
+        return runAgent(agent, config);
+      }),
+    );
   })
   .catch((error) => {
-    console.error("Fatal error in agent system:", error);
+    console.error("AGENTS DOWN:", error);
     process.exit(1);
   });

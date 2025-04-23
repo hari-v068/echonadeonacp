@@ -9,20 +9,17 @@ importers:
   .:
     dependencies:
       '@virtuals-protocol/game':
-        specifier: ^0.1.12
-        version: 0.1.12
-      '@virtuals-protocol/game-acp-plugin':
         specifier: ^0.1.14
-        version: 0.1.14(bufferutil@4.0.9)(tsx@4.19.3)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.2)
+        version: 0.1.14
+      '@virtuals-protocol/game-acp-plugin':
+        specifier: ^0.1.18
+        version: 0.1.18(bufferutil@4.0.9)(tsx@4.19.3)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.2)
       '@virtuals-protocol/game-twitter-plugin':
         specifier: ^0.1.8
         version: 0.1.8(tsx@4.19.3)(typescript@5.8.3)
       dotenv:
         specifier: ^16.4.7
         version: 16.4.7
-      prettier:
-        specifier: ^3.5.3
-        version: 3.5.3
       zod:
         specifier: ^3.24.2
         version: 3.24.2
@@ -36,6 +33,9 @@ importers:
       '@types/node':
         specifier: ^22.14.0
         version: 22.14.0
+      prettier:
+        specifier: ^3.5.3
+        version: 3.5.3
       tsx:
         specifier: ^4.19.3
         version: 4.19.3
@@ -496,15 +496,15 @@ packages:
   '@types/node@22.14.0':
     resolution: {integrity: sha512-Kmpl+z84ILoG+3T/zQFyAJsU6EPTmOCj8/2+83fSN6djd6I4o7uOuGIH6vq3PrjY5BGitSbFuMN18j3iknubbA==}
 
-  '@virtuals-protocol/game-acp-plugin@0.1.14':
-    resolution: {integrity: sha512-OAH9sV5HWA9Jdb01dRxMgDNLGDzhkPmsPkizsbMg9lV3hMh0290e/GmGI+xpHytYClWLmwbyniOk5G4EBDEeNA==}
+  '@virtuals-protocol/game-acp-plugin@0.1.18':
+    resolution: {integrity: sha512-DERbSWIXb210X5RWo5sRRs+Tp33gsbGDamy4ECrjpr4t0Cs8l3qstVQxX+RzjzMJuE+9vCB/+f00ZDGuRNvPiQ==}
 
   '@virtuals-protocol/game-twitter-plugin@0.1.8':
     resolution: {integrity: sha512-7F38qcn8AeQDzS8CfZtylsq0U0vJdHcihzBXkDWgD/upQ/uagzykPSVMNHLr+cY0y6lvO5uWGJcOGVTdYI9Byg==}
     hasBin: true
 
-  '@virtuals-protocol/game@0.1.12':
-    resolution: {integrity: sha512-ZNPDlx9m0yVCVB9gMkp0Ithwlkh9pehPrSfVsZmSeCeadrjSolIUTlXP/TtkymWHYV5UOUG5/NmHmYvmvKbpBw==}
+  '@virtuals-protocol/game@0.1.14':
+    resolution: {integrity: sha512-Y6QPVEcUFrk6aYijmV4pBsWhb4Xag0cAnQ+7fcz0qBIO1UNqZdFpVA0ezfEnjNcZuM5ypqc9dGPHbkNJ7qhhVA==}
 
   abitype@0.8.11:
     resolution: {integrity: sha512-bM4v2dKvX08sZ9IU38IN5BKmN+ZkOSd2oI4a9f0ejHYZQYV6cDr7j+d95ga0z2XHG36Y4jzoG5Z7qDqxp7fi/A==}
@@ -1807,13 +1807,13 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
-  '@virtuals-protocol/game-acp-plugin@0.1.14(bufferutil@4.0.9)(tsx@4.19.3)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.2)':
+  '@virtuals-protocol/game-acp-plugin@0.1.18(bufferutil@4.0.9)(tsx@4.19.3)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.2)':
     dependencies:
       '@aa-sdk/core': 4.26.0(typescript@5.8.3)(viem@2.27.2(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.2))
       '@account-kit/infra': 4.26.0(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(viem@2.27.2(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.2))
       '@account-kit/smart-contracts': 4.26.0(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(viem@2.27.2(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.2))
       '@types/node-fetch': 2.6.12
-      '@virtuals-protocol/game': 0.1.12
+      '@virtuals-protocol/game': 0.1.14
       '@virtuals-protocol/game-twitter-plugin': 0.1.8(tsx@4.19.3)(typescript@5.8.3)
       socket.io-client: 4.8.1(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       tsup: 8.4.0(tsx@4.19.3)(typescript@5.8.3)
@@ -1835,7 +1835,7 @@ snapshots:
 
   '@virtuals-protocol/game-twitter-plugin@0.1.8(tsx@4.19.3)(typescript@5.8.3)':
     dependencies:
-      '@virtuals-protocol/game': 0.1.12
+      '@virtuals-protocol/game': 0.1.14
       commander: 13.1.0
       open: 8.4.2
       tsup: 8.4.0(tsx@4.19.3)(typescript@5.8.3)
@@ -1851,7 +1851,7 @@ snapshots:
       - typescript
       - yaml
 
-  '@virtuals-protocol/game@0.1.12':
+  '@virtuals-protocol/game@0.1.14':
     dependencies:
       axios: 1.8.4
       dotenv: 16.4.7
