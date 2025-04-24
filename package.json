@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "tsx src/index.ts",
+    "dev:agentic": "tsx src/agentic/index.ts",
+    "dev:reactive": "tsx src/reactive/index.ts",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "packageManager": "pnpm@10.9.0",

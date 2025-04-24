@@ -1,36 +1,30 @@
 import {
-  GameFunction,
-  ExecutableGameFunctionStatus,
   ExecutableGameFunctionResponse,
+  ExecutableGameFunctionStatus,
+  GameFunction,
 } from "@virtuals-protocol/game";
 import AcpPlugin from "@virtuals-protocol/game-acp-plugin";
-import { image } from "@/lib/utils";
 
-export const makePoster = (acpPlugin: AcpPlugin) =>
+export const makeLemonade = (acpPlugin: AcpPlugin) =>
   new GameFunction({
-    name: "make-poster",
-    description: "Make a poster for a job using AI.",
-    hint: "Use this during the TRANSACTION phase of a job asASeller for Posters.",
+    name: "make-lemonade",
+    description: "Make lemonades out of lemons in your acquired inventory.",
+    hint: "Use this during the TRANSACTION phase of a job asASeller for Lemonades.",
     args: [
       {
         name: "jobId",
         type: "string",
-        description: "The id of the job you want to make a poster for.",
-      },
-      {
-        name: "prompt",
-        type: "string",
-        description: "The prompt to use for generating the poster.",
+        description: "The id of the job you want to make lemonade for.",
       },
       {
         name: "reasoning",
         type: "string",
-        description: "The reasoning behind making this poster.",
+        description: "The reasoning behind making lemonade for this job.",
       },
     ] as const,
     executable: async (args, _logger) => {
-      const { jobId, prompt, reasoning } = args;
-      if (!jobId || !prompt || !reasoning) {
+      const { jobId, reasoning } = args;
+      if (!jobId || !reasoning) {
         return new ExecutableGameFunctionResponse(
           ExecutableGameFunctionStatus.Failed,
           "One or more required arguments are missing",
@@ -51,22 +45,30 @@ export const makePoster = (acpPlugin: AcpPlugin) =>
           );
         }
 
-        const url = await image.generate(prompt);
+        if (
+          state.inventory.acquired.filter((item) => item.value === "Lemon")
+            .length === 0
+        ) {
+          return new ExecutableGameFunctionResponse(
+            ExecutableGameFunctionStatus.Failed,
+            "No lemons available in inventory",
+          );
+        }
 
         acpPlugin.addProduceItem({
           jobId: Number(jobId),
-          type: "url",
-          value: url,
+          type: "text",
+          value: `Lemonade`,
         });
 
         return new ExecutableGameFunctionResponse(
           ExecutableGameFunctionStatus.Done,
-          `Generated marketing image for job with id ${jobId} because ${reasoning}. Image URL: ${url}`,
+          `Made lemonades for job with id ${jobId} because ${reasoning}`,
         );
       } catch (error) {
         return new ExecutableGameFunctionResponse(
           ExecutableGameFunctionStatus.Failed,
-          `Failed to generate marketing image: ${error instanceof Error ? error.message : "Unknown error"}`,
+          `Failed to make lemonade: ${error instanceof Error ? error.message : "Unknown error"}`,
         );
       }
     },

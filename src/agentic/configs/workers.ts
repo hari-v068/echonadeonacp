@@ -1,10 +1,10 @@
-import AcpPlugin from "@virtuals-protocol/game-acp-plugin";
 import {
+  harvestLemon,
   makeLemonade,
   makePermit,
   makePoster,
-  harvestLemon,
-} from "@/game/functions";
+} from "@/agentic/functions";
+import AcpPlugin from "@virtuals-protocol/game-acp-plugin";
 
 export interface WorkerConfig {
   id: string;

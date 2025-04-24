@@ -1,5 +1,5 @@
-import { z } from "zod";
 import * as dotenv from "dotenv";
+import { z } from "zod";
 
 dotenv.config();
 
@@ -28,6 +28,11 @@ const envSchema = z.object({
   ZESTIE_PRIVATE_KEY: z.string().min(1),
   ZESTIE_ENTITY_ID: z.string().min(1),
   ZESTIE_WALLET_ADDRESS: z.string().min(1),
+
+  // Evo agent configuration
+  EVO_PRIVATE_KEY: z.string().min(1),
+  EVO_ENTITY_ID: z.string().min(1),
+  EVO_WALLET_ADDRESS: z.string().min(1),
 
   // Utility configuration
   LEONARDO_API_KEY: z.string().min(1),

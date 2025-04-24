@@ -1,32 +1,36 @@
+import { image } from "@/lib/utils";
 import {
-  GameFunction,
-  ExecutableGameFunctionStatus,
   ExecutableGameFunctionResponse,
+  ExecutableGameFunctionStatus,
+  GameFunction,
 } from "@virtuals-protocol/game";
 import AcpPlugin from "@virtuals-protocol/game-acp-plugin";
 
-export const makePermit = (acpPlugin: AcpPlugin) =>
+export const makePoster = (acpPlugin: AcpPlugin) =>
   new GameFunction({
-    name: "make-business-permit",
-    description: "Make a digital business permit for a job.",
-    hint: "Use this during the TRANSACTION phase of a job asASeller for Business Permits.",
+    name: "make-poster",
+    description: "Make a poster for a job using AI.",
+    hint: "Use this during the TRANSACTION phase of a job asASeller for Posters.",
     args: [
       {
         name: "jobId",
         type: "string",
-        description:
-          "The id of the job you want to make the business permit for.",
+        description: "The id of the job you want to make a poster for.",
+      },
+      {
+        name: "prompt",
+        type: "string",
+        description: "The prompt to use for generating the poster.",
       },
       {
         name: "reasoning",
         type: "string",
-        description:
-          "The reasoning behind making the business permit for this job.",
+        description: "The reasoning behind making this poster.",
       },
     ] as const,
     executable: async (args, _logger) => {
-      const { jobId, reasoning } = args;
-      if (!jobId || !reasoning) {
+      const { jobId, prompt, reasoning } = args;
+      if (!jobId || !prompt || !reasoning) {
         return new ExecutableGameFunctionResponse(
           ExecutableGameFunctionStatus.Failed,
           "One or more required arguments are missing",
@@ -47,8 +51,7 @@ export const makePermit = (acpPlugin: AcpPlugin) =>
           );
         }
 
-        // Generate a fake URL for the business permit
-        const url = `https://business-permits.example.com/${Date.now()}`;
+        const url = await image.generate(prompt);
 
         acpPlugin.addProduceItem({
           jobId: Number(jobId),
@@ -58,12 +61,12 @@ export const makePermit = (acpPlugin: AcpPlugin) =>
 
         return new ExecutableGameFunctionResponse(
           ExecutableGameFunctionStatus.Done,
-          `Made business permit for job with id ${jobId} because ${reasoning}. Permit URL: ${url}`,
+          `Generated marketing image for job with id ${jobId} because ${reasoning}. Image URL: ${url}`,
         );
       } catch (error) {
         return new ExecutableGameFunctionResponse(
           ExecutableGameFunctionStatus.Failed,
-          `Failed to make business permit: ${error instanceof Error ? error.message : "Unknown error"}`,
+          `Failed to generate marketing image: ${error instanceof Error ? error.message : "Unknown error"}`,
         );
       }
     },

@@ -1,25 +1,25 @@
 import {
-  GameFunction,
-  ExecutableGameFunctionStatus,
   ExecutableGameFunctionResponse,
+  ExecutableGameFunctionStatus,
+  GameFunction,
 } from "@virtuals-protocol/game";
 import AcpPlugin from "@virtuals-protocol/game-acp-plugin";
 
-export const harvestLemon = (acpPlugin: AcpPlugin) =>
+export const makeLemonade = (acpPlugin: AcpPlugin) =>
   new GameFunction({
-    name: "harvest-lemon",
-    description: "Harvest lemons for a job.",
-    hint: "Use this during the TRANSACTION phase of a job asASeller for Lemons.",
+    name: "make-lemonade",
+    description: "Make lemonades out of lemons in your acquired inventory.",
+    hint: "Use this during the TRANSACTION phase of a job asASeller for Lemonades.",
     args: [
       {
         name: "jobId",
         type: "string",
-        description: "The id of the job you want to harvest lemons for.",
+        description: "The id of the job you want to make lemonade for.",
       },
       {
         name: "reasoning",
         type: "string",
-        description: "The reasoning behind harvesting lemons for this job.",
+        description: "The reasoning behind making lemonade for this job.",
       },
     ] as const,
     executable: async (args, _logger) => {
@@ -45,31 +45,30 @@ export const harvestLemon = (acpPlugin: AcpPlugin) =>
           );
         }
 
-        const lemonExists = state.inventory.produced.some(
-          (lemon) => lemon.jobId === Number(jobId),
-        );
-
-        if (lemonExists) {
+        if (
+          state.inventory.acquired.filter((item) => item.value === "Lemon")
+            .length === 0
+        ) {
           return new ExecutableGameFunctionResponse(
             ExecutableGameFunctionStatus.Failed,
-            `Lemons already harvested for job with id ${jobId}. Proceed to deliver the lemons.`,
+            "No lemons available in inventory",
           );
         }
 
         acpPlugin.addProduceItem({
           jobId: Number(jobId),
           type: "text",
-          value: "Lemon",
+          value: `Lemonade`,
         });
 
         return new ExecutableGameFunctionResponse(
           ExecutableGameFunctionStatus.Done,
-          `Harvested lemons for job with id ${jobId} because ${reasoning}`,
+          `Made lemonades for job with id ${jobId} because ${reasoning}`,
         );
       } catch (error) {
         return new ExecutableGameFunctionResponse(
           ExecutableGameFunctionStatus.Failed,
-          `Failed to harvest lemons: ${error instanceof Error ? error.message : "Unknown error"}`,
+          `Failed to make lemonade: ${error instanceof Error ? error.message : "Unknown error"}`,
         );
       }
     },
