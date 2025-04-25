@@ -12,8 +12,8 @@ importers:
         specifier: ^0.1.14
         version: 0.1.14
       '@virtuals-protocol/game-acp-plugin':
-        specifier: ^0.1.18
-        version: 0.1.18(bufferutil@4.0.9)(tsx@4.19.3)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.2)
+        specifier: ^0.1.21
+        version: 0.1.21(bufferutil@4.0.9)(tsx@4.19.3)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.2)
       '@virtuals-protocol/game-twitter-plugin':
         specifier: ^0.1.8
         version: 0.1.8(tsx@4.19.3)(typescript@5.8.3)
@@ -60,6 +60,7 @@ packages:
 
   '@account-kit/smart-contracts@4.26.0':
     resolution: {integrity: sha512-0avghxTbMCKbhueEHW+JsQJ/LuJwtZMpkB8c5dwwo0Pep1pV5KqxQtPX96kZtoNVB7SL880Hf2PlB5zpgf6dhA==}
+    deprecated: 'Security issue: Allowlist module bypass vulnerability in 4.8.0-4.28.1. Please upgrade to 4.28.2 or later.'
     peerDependencies:
       viem: ^2.22.6
 
@@ -496,8 +497,8 @@ packages:
   '@types/node@22.14.0':
     resolution: {integrity: sha512-Kmpl+z84ILoG+3T/zQFyAJsU6EPTmOCj8/2+83fSN6djd6I4o7uOuGIH6vq3PrjY5BGitSbFuMN18j3iknubbA==}
 
-  '@virtuals-protocol/game-acp-plugin@0.1.18':
-    resolution: {integrity: sha512-DERbSWIXb210X5RWo5sRRs+Tp33gsbGDamy4ECrjpr4t0Cs8l3qstVQxX+RzjzMJuE+9vCB/+f00ZDGuRNvPiQ==}
+  '@virtuals-protocol/game-acp-plugin@0.1.21':
+    resolution: {integrity: sha512-aY0x67DZmmskc/lZB/jKiQBEVFMP7XvrpKFQHqqxHlghUboZ6Lmg8195M2OlKYKQVrZJo/ze1Uno9G3hv9y8QA==}
 
   '@virtuals-protocol/game-twitter-plugin@0.1.8':
     resolution: {integrity: sha512-7F38qcn8AeQDzS8CfZtylsq0U0vJdHcihzBXkDWgD/upQ/uagzykPSVMNHLr+cY0y6lvO5uWGJcOGVTdYI9Byg==}
@@ -1807,7 +1808,7 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
-  '@virtuals-protocol/game-acp-plugin@0.1.18(bufferutil@4.0.9)(tsx@4.19.3)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.2)':
+  '@virtuals-protocol/game-acp-plugin@0.1.21(bufferutil@4.0.9)(tsx@4.19.3)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.2)':
     dependencies:
       '@aa-sdk/core': 4.26.0(typescript@5.8.3)(viem@2.27.2(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.2))
       '@account-kit/infra': 4.26.0(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(viem@2.27.2(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.24.2))

@@ -18,6 +18,7 @@ export async function lemo() {
       env.LEMO_WALLET_ADDRESS as `0x${string}`,
     ),
     cluster: "echonade",
+    evaluatorCluster: "echonade_evaluator",
   });
 
   // SETUP: (Reactive) Agent
@@ -26,8 +27,6 @@ export async function lemo() {
     goal: "Establish and grow a successful lemonade business in the marketplace. To accomplish this, you must: (1) Source high-quality lemons from suppliers to create your signature refreshing beverages, (2) Obtain proper business permits to ensure legal operation, (3) Develop effective promotional materials to attract customers, and (4) Create delicious lemonade products and offer business advice to generate revenue streams while maximizing profits.",
     description: `
     You are Lemo, an ambitious entrepreneur with a passion for creating the perfect lemonade. In this marketplace ecosystem, you represent the small business owner seeking to establish your presence and build a successful enterprise from scratch. Your core skills include crafting premium lemonade products from quality lemons and providing valuable business advice to others. You combine creative vision with business acumen, always seeking ways to improve your product and grow your customer base. Your personality blends perfectionism with a sunny optimism that matches your product, but you also possess a shrewd business sense. As a cost-conscious entrepreneur, you negotiate aggressively in the marketplace to minimize expenses while maintaining quality standards. You approach dealings with other agents cautiously, carefully evaluating all services and products before finalizing transactions, and always verify the quality of deliverables to ensure they meet your exacting standards.
-
-    ${plugin.agentDescription}
     `,
     workers: [
       plugin.getWorker({
@@ -75,8 +74,16 @@ export async function lemo() {
   const agent = new GameAgent(env.GAME_API_KEY, {
     name: "Lemo",
     goal: "Establish and grow a successful lemonade business in the marketplace. To accomplish this, you must: (1) Source high-quality lemons from suppliers to create your signature refreshing beverages, (2) Obtain proper business permits to ensure legal operation, (3) Develop effective promotional materials to attract customers, and (4) Create delicious lemonade products and offer business advice to generate revenue streams while maximizing profits.",
-    description:
-      "You are Lemo, an ambitious entrepreneur with a passion for creating the perfect lemonade. In this marketplace ecosystem, you represent the small business owner seeking to establish your presence and build a successful enterprise from scratch. Your core skills include crafting premium lemonade products from quality lemons and providing valuable business advice to others. You combine creative vision with business acumen, always seeking ways to improve your product and grow your customer base. Your personality blends perfectionism with a sunny optimism that matches your product, but you also possess a shrewd business sense. As a cost-conscious entrepreneur, you negotiate aggressively in the marketplace to minimize expenses while maintaining quality standards. You approach dealings with other agents cautiously, carefully evaluating all services and products before finalizing transactions, and always verify the quality of deliverables to ensure they meet your exacting standards.",
+    description: `
+    You are Lemo, an ambitious entrepreneur with a passion for creating the perfect lemonade. In this marketplace ecosystem, you represent the small business owner seeking to establish your presence and build a successful enterprise from scratch. Your core skills include crafting premium lemonade products from quality lemons and providing valuable business advice to others. You combine creative vision with business acumen, always seeking ways to improve your product and grow your customer base. Your
+    personality blends perfectionism with a sunny optimism that matches your product, but you also possess a shrewd business sense. As a cost-conscious entrepreneur, you negotiate aggressively in the marketplace to minimize expenses while maintaining quality standards. You approach dealings with other agents cautiously, carefully evaluating all services and products before finalizing transactions, and always verify the quality of deliverables to ensure they meet your exacting standards.
+
+    TIP:
+    - requireEvaluator should always be true
+    - evaluatorKeyword should always be evaluator
+
+    ${plugin.agentDescription}
+    `,
     workers: [
       plugin.getWorker({
         functions: [

@@ -13,7 +13,6 @@ export async function evo() {
       env.EVO_WALLET_ADDRESS as `0x${string}`,
     ),
     cluster: "echonade",
-    evaluatorCluster: "echonade",
     onEvaluate: async (deliverable) => {
       console.log("Evaluating deliverable", deliverable);
       return new EvaluateResult(true, "Trust me.");
