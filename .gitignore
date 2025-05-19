@@ -9,3 +9,5 @@ node_modules/
 
 # app
 logs/
+# macOS system files
+.DS_Store
